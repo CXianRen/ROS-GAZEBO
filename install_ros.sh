@@ -17,3 +17,11 @@ source ~/.bashrc
 
 sudo apt-get install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
 
+# 设置工作区
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make
+source devel/setup.bash
+
+echo $ROS_PACKAGE_PATH
+
