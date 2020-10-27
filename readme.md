@@ -7,8 +7,8 @@ http://wiki.ros.org/roslaunch
 
 # ros启动步骤
 ## step 1
-### roscore
+###     roscore
 ## step 2
-### rosrun xxx(your package)
+###     rosrun xxx(your package)
 
 # roslaunch 文件
