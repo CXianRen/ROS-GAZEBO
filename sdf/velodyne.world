@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!--  A velodyne -->
+    <model name="volodyne_hdl-32">
+      <link name="base">
+        <pose>0 0 0.03 0 0 0</pose>
+        <collision name="base_collision">
+          <geometry>
+            <cylinder>
+              <radius>.04267</radius>
+              <length>.05867</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="base_visual">
+          <geometry>
+            <cylinder>
+              <radius>.04267</radius>
+              <length>.05867</length>
+            </cylinder>
+          </geometry>
+        </visual>
+      </link>
+
+      <link name="top">
+        <pose>0 0 0.095 0 0 0</pose>
+        <collision name="top_collision">
+          <geometry>
+            <cylinder>
+              <radius>.04267</radius>
+              <length>.05867</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        
+        <visual name="top_visual">
+          <geometry>
+            <cylinder>
+              <radius>.04267</radius>
+              <length>.05867</length>
+            </cylinder>
+          </geometry>
+        </visual>
+      </link>
+
+    </model>
+  </world>
+</sdf>
