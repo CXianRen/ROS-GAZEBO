@@ -1,6 +1,7 @@
 <launch>
+	<arg name="wn"/>
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<arg name="world_name" value="$(find custom_urdf)/worlds/myworld.world"/> 
+		<arg name="world_name" value="$(arg wn)"/> 	
 		<arg name="paused" value="false"/>
 		<arg name="use_sim_time" value="true"/>
 		<arg name="gui" value="true"/>
@@ -11,9 +12,6 @@
 
     <arg name = "model"/>
     <param name = "robot_description" command = "$(find xacro)/xacro.py $(arg model)"/>
-    <node name = "joint_state_publisher"
-          pkg = "joint_state_publisher_gui"
-          type = "joint_state_publisher_gui"/>
 
     <node name = "robot_state_publisher"
           pkg = "robot_state_publisher"
@@ -24,5 +22,5 @@
           type = "spawn_model"
           args = "-urdf -param robot_description -z 0.1 -model robot_model"
           />
-
+	
 </launch>

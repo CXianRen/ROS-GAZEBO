@@ -12,105 +12,61 @@
       <uri>model://ground_plane</uri>
     </include>
 
-    <!--  A velodyne -->
-    <model name="volodyne_hdl-32">
-      <link name="base">
-        <pose>0 0 0.03 0 0 0</pose>
-        <collision name="base_collision">
-          <geometry>
-            <cylinder>
-              <radius>.04267</radius>
-              <length>.05867</length>
-            </cylinder>
-          </geometry>
-        </collision>
-        <visual name="base_visual">
-          <geometry>
-            <cylinder>
-              <radius>.04267</radius>
-              <length>.05867</length>
-            </cylinder>
-          </geometry>
-        </visual>
+    <!-- setting location bar -->
+    <model name='unit_cylinder'>
+      <pose>0.002496 -0.039777 0.5 0 -0 0</pose>
+      <link name='link'>
         <inertial>
-          <mass>1.2</mass>
+          <mass>10000</mass>
           <inertia>
-            <ixx>0.001087473</ixx>
-            <iyy>0.001087473</iyy>
-            <izz>0.001092437</izz>
+            <ixx>0.145833</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
+            <iyy>0.145833</iyy>
             <iyz>0</iyz>
+            <izz>0.125</izz>
           </inertia>
+          <pose frame=''>0 0 0 0 -0 0</pose>
         </inertial>
 
-      </link>
-
-      <link name="top">
-        <pose>0 0 0.095 0 0 0</pose>
-        <collision name="top_collision">
+        <collision name='collision'>
           <geometry>
             <cylinder>
-              <radius>.04267</radius>
-              <length>.05867</length>
+              <radius>0.5</radius>
+              <length>1</length>
             </cylinder>
           </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
         </collision>
 
-        <visual name="top_visual">
+        <visual name='visual'>
           <geometry>
             <cylinder>
-              <radius>.04267</radius>
-              <length>.05867</length>
+              <radius>0.25</radius>
+              <length>1</length>
             </cylinder>
           </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
         </visual>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-            <ixx>0.000090623</ixx>
-            <iyy>0.000090623</iyy>
-            <izz>0.000091036</izz>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyz>0</iyz>
-          </inertia>
-        </inertial>
-        <sensor type="ray" name="sensor">
-          <pose>0 0 -0.004645 1.5707 0 0</pose>
-          <visualize>true</visualize>
-          <update_rate>30</update_rate>
-          <ray>
-            <scan>
-              <horizontal>
-                <samples>1</samples>
-                <resolution>1</resolution>
-                <min_angle>-0.001</min_angle>
-                <max_angle>0.001</max_angle>
-              </horizontal>
-            </scan>
-            <range>
-              <min>0.05</min>
-              <max>70</max>
-              <resolution>0.02</resolution>
-            </range>
-          </ray>
-        </sensor>
       </link>
-
-      <joint type="revolute" name="joint">
-        <pose>0 0 -0.036785 0 0 0</pose>
-        <parent>base</parent>
-        <child>top</child>
-        <axis>
-          <xyz>0 0 1</xyz>
-          <limit>
-            <!-- Use a very large number to indicate a continuous revolution -->
-            <lower>-10000000000000000</lower>
-            <upper>10000000000000000</upper>
-          </limit>
-        </axis>
-      </joint>
     </model>
+
   </world>
 </sdf>

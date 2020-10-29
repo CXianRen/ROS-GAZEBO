@@ -1,0 +1,3 @@
+catkin_create_pkg beginner_tutorials std_msgs rospy roscpp urdf
+
+后面接上的刷新工作环境是必须要有的，如果创建后没有刷新会报找不到路径的错误,还有另一种方法： rospack profile

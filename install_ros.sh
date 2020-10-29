@@ -22,6 +22,8 @@ mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin_make
 source devel/setup.bash
-
 echo $ROS_PACKAGE_PATH
 
+#键盘遥控
+sudo apt-get install ros-melodic-teleop-twist-keyboard #4轮车的
+sudo apt-get install ros-melodic-turtlebot3-teleop　　　#2轮车的
