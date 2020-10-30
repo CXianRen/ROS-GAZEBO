@@ -11,5 +11,22 @@ bash ./install_ros.sh
 # 安装gazebo
 bash ./install_gazebo.sh
 
-# RUN
-roslaunch senseedu_robot_description gazebo_world.launch model:="`rospack find senseedu_robot_description`/urdf/turtlebot3/turtlebot3_waffle_pi.urdf.xacro" wn:="`rospack find senseedu_robot_description`/worlds/myworld.world"
+# 复制机器人包
+cp -r ./senseedu_robot_description ~/catkin_ws/src
+cd ~/catkin_ws/src && catkin_make
+rospack profile
+
+# 运行环境
+source ~/.bashrc
+source ~/catkin_ws/devel/setup.bash
+roslaunch senseedu_robot_description gazebo_world.launch model:="`rospack find senseedu_robot_description`/urdf/turtlebot3/turtlebot3_waffle_pi.urdf.xacro" wn:="`rospack find senseedu_robot_description`/worlds/_4bar.world"
+
+# 运行遥控器
+export TURTLEBOT3_MODEL=waffle_pi
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+# 运行图片查看器
+rqt_image_view
+
+# 查看陀螺仪信息／和编码器信息
+rostopic echo /imu
